@@ -1,0 +1,30 @@
+-Criar a tabela Clientes
+CREATE TABLE Pedidos (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    data_pedido DATE NOT NULL,
+    valor DECIMAL(10, 2) NOT NULL,
+    cliente_id INT,
+    FOREIGN KEY (cliente_id) REFERENCES Clientes(id)
+);
+
+-Criar a tabela Pedidos
+CREATE TABLE Pedidos (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    data_pedido DATE NOT NULL,
+    valor DECIMAL(10, 2) NOT NULL,
+    cliente_id INT,
+    FOREIGN KEY (cliente_id) REFERENCES Clientes(id)
+);
+
+-Inserir dados
+INSERT INTO Clientes (nome, email) VALUES ('João Silva', 'joao.silva@example.com');
+
+INSERT INTO Pedidos (data_pedido, valor, cliente_id) VALUES ('2023-10-01', 100.00, 1);
+INSERT INTO Pedidos (data_pedido, valor, cliente_id) VALUES ('2023-10-05', 200.00, 1);
+
+
+-Consultar os dados
+SELECT Clientes.nome, Pedidos.data_pedido, Pedidos.valor
+FROM Clientes
+JOIN Pedidos ON Clientes.id = Pedidos.cliente_id
+WHERE Clientes.id = 1;
